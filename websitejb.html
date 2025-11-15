@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toko Akun Game</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+        }
+        header {
+            background: #111827;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .produk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.03);
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0 5px;
+        }
+        .desc { font-size: 14px; color: #555; }
+        .price {
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #10b981;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover {
+            background: #059669;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1f2937;
+            color: #fff;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body><header>Toko Jual Akun Game • Aman & Terpercaya</header><div class="container">
+    <h2>Daftar Akun</h2><div class="produk-grid" id="produkList"></div>
+
+</div><footer>
+    © 2025 Toko Akun Game — Order via WhatsApp Admin
+</footer><script>
+const produk = [
+    {
+        nama: "Akun Free Fire Sultan",
+        harga: 750000,
+        img: "https://i.ibb.co/9VJmXv2/ff.jpg",
+        desc: "Skin lengkap, emote full, rank master."
+    },
+    {
+        nama: "Akun Mobile Legends Epic",
+        harga: 450000,
+        img: "https://i.ibb.co/R4z0GdV/ml.jpg",
+        desc: "Hero banyak, skin epic, winrate bagus."
+    },
+    {
+        nama: "Akun Genshin Impact AR55",
+        harga: 900000,
+        img: "https://i.ibb.co/4N9yvc1/gi.jpg",
+        desc: "5★ banyak, build rapi dan siap main."
+    },
+    {
+        nama: "Akun PUBG Mobile Elite",
+        harga: 600000,
+        img: "https://i.ibb.co/LJqtbk2/pubg.jpg",
+        desc: "Skin set, weapon skin, title lengkap."
+    }
+];
+
+function tampilkanProduk() {
+    const list = document.getElementById('produkList');
+    list.innerHTML = '';
+
+    produk.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        card.innerHTML = `
+            <img src="${p.img}" alt="${p.nama}">  
+            <div class="title">${p.nama}</div>
+            <div class="desc">${p.desc}</div>
+            <div class="price">Rp ${p.harga.toLocaleString('id-ID')}</div>
+            <button onclick="order('${p.nama}', '${p.harga}')">Order WhatsApp</button>
+        `;
+
+        list.appendChild(card);
+    });
+}
+
+function order(nama, harga) {
+    const pesan = encodeURIComponent(`Halo admin, saya ingin order:\nAkun: ${nama}\nHarga: Rp ${harga.toLocaleString('id-ID')}`);
+    const nomor = "6281234567890"; // ganti ke nomor admin
+    window.open(`https://wa.me/${nomor}?text=${pesan}`, '_blank');
+}
+
+tampilkanProduk();
+</script></body>
+</html>
